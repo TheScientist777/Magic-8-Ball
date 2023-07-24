@@ -48,10 +48,16 @@ answer = createAnswer()
 ballContainer.append(answer)
 }
 
-shakeButton.addEventListener('click' shakeBall)
+const checkQuestion = () => {
+    return question.vaule > 0
+}
+
+shakeButton.addEventListener('click' () => {
+    if () shakeBall() 
+})
 
 question.addEventListener('keyup', (e) => {
-    alert (question.vaule)
+    shakeButton.disabled = question.vaule.length > 0 ? false : true
 })
 
 
