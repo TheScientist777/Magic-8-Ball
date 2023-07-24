@@ -30,8 +30,8 @@ const messages = {
 const createAnswer = {} => {
   const answerElement = document.createElement('p')
 answer.classList.add('fade', 'text-center', 'fs-1', 'fw-bold', 
-'bg-white','text-danger','py-5', 'p-3', 'rounded', 'w-50', 'position-absolute', 'top-50', 
-'start-50','translate-middle')
+'bg-white','text-danger','py-5', 'p-3', 'rounded', 'w-50', 
+'position-absolute', 'top-50','start-50','translate-middle',)
 
 const seed = Math.random() * messages.length
 const randomIndex = seed > 0 ? Math.floor(seed) : Math.ceil(seed)
@@ -42,12 +42,17 @@ return answerElement
 }
 
 const shakeBall = () => {
+if (answer) answer.remove()
 
 answer = createAnswer()
 ballContainer.append(answer)
 }
 
-shakeButton.addEventListener('click' () => alert('Clicked'))
+shakeButton.addEventListener('click' shakeBall)
+
+question.addEventListener('keyup', (e) => {
+    alert (question.vaule)
+})
 
 
 // answer.remove()
