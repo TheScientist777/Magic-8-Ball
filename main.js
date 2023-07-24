@@ -2,6 +2,8 @@ const ballContainer = document.querySelector('#ball-container');
 const question = document.querySelector('#question');
 const shakeButton = document.querySelector('#shake-button');
 
+const answerElement = document.querySelector('#answer');
+
 let answer = null;
 
 const messages = [
@@ -28,30 +30,26 @@ const messages = [
 ];
 
 const createAnswer = () => {
-    const answerElement = document.createElement('p');
     answerElement.classList.add(
         'fade', 'text-center', 'fs-1', 'fw-bold',
         'bg-white', 'text-danger', 'py-5', 'p-3', 'rounded', 'w-50',
-        'position-absolute', 'top-50', 'start-50', 'translate-middle'
+        'position-absolute', 'top-50', 'start-100', 'translate-middle'
     );
 
     const seed = Math.random() * messages.length;
     const randomIndex = seed > 0 ? Math.floor(seed) : Math.ceil(seed);
 
     answerElement.innerText = messages[randomIndex];
-
-    return answerElement;
 };
 
 const shakeBall = () => {
     ballContainer.classList.add('shake');
     if (answer) answer.remove();
 
-    answer = createAnswer();
+    createAnswer(); 
 
     setTimeout(() => {
         ballContainer.classList.remove('shake');
-        ballContainer.append(answer);
     }, 1000);
 };
 
