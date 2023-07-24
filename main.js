@@ -1,10 +1,10 @@
-const ballContainer = document.querySelector('#ball-container')
-const question = document.querySelector('#question')
-const shakeButton = document.querySelector('#shake-button')
+const ballContainer = document.querySelector('#ball-container');
+const question = document.querySelector('#question');
+const shakeButton = document.querySelector('#shake-button');
 
-let answer = null.add
+let answer = null;
 
-const messages = {
+const messages = [
     'It is certain',
     'It is decidedly so',
     'Without a doubt',
@@ -23,50 +23,52 @@ const messages = {
     "Don't count on it",
     'My reply is no',
     'My sources say no',
-    'Outlook not so good',
+    'Outlook not so good’,
     'very doubtful',
-}
+];
 
-const createAnswer = {} => {
-  const answerElement = document.createElement('p')
-answer.classList.add('fade', 'text-center', 'fs-1', 'fw-bold', 
-'bg-white','text-danger','py-5', 'p-3', 'rounded', 'w-50', 
-'position-absolute', 'top-50','start-50','translate-middle',)
+const createAnswer = () => {
+    const answerElement = document.createElement('p');
+    answerElement.classList.add(
+        'fade', 'text-center', 'fs-1', 'fw-bold',
+        'bg-white', 'text-danger', 'py-5', 'p-3', 'rounded', 'w-50',
+        'position-absolute', 'top-50', 'start-50', 'translate-middle'
+    );
 
-const seed = Math.random() * messages.length
-const randomIndex = seed > 0 ? Math.floor(seed) : Math.ceil(seed)
+    const seed = Math.random() * messages.length;
+    const randomIndex = seed > 0 ? Math.floor(seed) : Math.ceil(seed);
 
-answerElement.innerText = messages[randomIndex]
+    answerElement.innerText = messages[randomIndex];
 
-return answerElement
-}
+    return answerElement;
+};
 
 const shakeBall = () => {
-    ballContainer.classList.add('shake')
-    if (answer) answer.remove()
+    ballContainer.classList.add('shake');
+    if (answer) answer.remove();
 
-answer = createAnswer()
+    answer = createAnswer();
 
-setTimeout(()=>{
-    ballContainer.classList.remove('shake')
-    ballContainer.append(answer)
-}, 1000)
-
-}
+    setTimeout(() => {
+        ballContainer.classList.remove('shake');
+        ballContainer.append(answer);
+    }, 1000);
+};
 
 const checkQuestion = () => {
-    return question.vaule > 0
-}
+    return question.value.trim().length > 0;
+};
 
-shakeButton.addEventListener('click' () => {
-    if(checkQuestion()) shakeBall() 
-})
+shakeButton.addEventListener('click', () => {
+    if (checkQuestion()) {
+        shakeBall();
+    }
+});
 
 question.addEventListener('keyup', (e) => {
-    shakeButton.disabled = !checkQuestion()
+    shakeButton.disabled = !checkQuestion();
 
-    if(e.key === 'Enter' && checkQuestion() shakeBall)
-})
-
-
-// answer.remove()
+    if (e.key === 'Enter' && checkQuestion()) {
+        shakeBall();
+    }
+});
