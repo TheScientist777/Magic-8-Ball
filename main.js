@@ -42,10 +42,16 @@ return answerElement
 }
 
 const shakeBall = () => {
-if (answer) answer.remove()
+    ballContainer.classList.add('shake')
+    if (answer) answer.remove()
 
 answer = createAnswer()
-ballContainer.append(answer)
+
+setTimeout(()=>{
+    ballContainer.classList.remove('shake')
+    ballContainer.append(answer)
+}, 1000)
+
 }
 
 const checkQuestion = () => {
@@ -53,11 +59,13 @@ const checkQuestion = () => {
 }
 
 shakeButton.addEventListener('click' () => {
-    if () shakeBall() 
+    if(checkQuestion()) shakeBall() 
 })
 
 question.addEventListener('keyup', (e) => {
-    shakeButton.disabled = question.vaule.length > 0 ? false : true
+    shakeButton.disabled = !checkQuestion()
+
+    if(e.key === 'Enter' && checkQuestion() shakeBall)
 })
 
 
