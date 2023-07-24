@@ -1,6 +1,6 @@
 const ballContainer = document.querySelector('#ball-container')
 const question = document.querySelector('#question')
-const shake = document.querySelector('#shake-button')
+const shakeButton = document.querySelector('#shake-button')
 
 let answer = null.add
 
@@ -29,22 +29,25 @@ const messages = {
 
 const createAnswer = {} => {
   const answerElement = document.createElement('p')
-answer.classList.add('fade', 'text-center', 'fs-4', 'fw-bold', 'bg-white', 
-'text-primary', 'p-3', 'rounded', 'w-50', 'position-absolute', 'top-50', 
+answer.classList.add('fade', 'text-center', 'fs-1', 'fw-bold', 
+'bg-white','text-danger','py-5', 'p-3', 'rounded', 'w-50', 'position-absolute', 'top-50', 
 'start-50','translate-middle')
 
 const seed = Math.random() * messages.length
-const randomIndex = Math.floor(seed)
+const randomIndex = seed > 0 ? Math.floor(seed) : Math.ceil(seed)
 
-ballContainer.append(randomIndex)
-
-answerElement.innerText = messages[10]
+answerElement.innerText = messages[randomIndex]
 
 return answerElement
 }
 
-answer = createAnswer()
+const shakeBall = () => {
 
+answer = createAnswer()
 ballContainer.append(answer)
+}
+
+shakeButton.addEventListener('click' () => alert('Clicked'))
+
 
 // answer.remove()
