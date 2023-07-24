@@ -33,7 +33,8 @@ answer.classList.add('fade', 'text-center', 'fs-4', 'fw-bold', 'bg-white',
 'text-primary', 'p-3', 'rounded', 'w-50', 'position-absolute', 'top-50', 
 'start-50','translate-middle')
 
-const randomIndex = Math.random() * messages.length
+const seed = Math.random() * messages.length
+const randomIndex = Math.floor(seed)
 
 ballContainer.append(randomIndex)
 
