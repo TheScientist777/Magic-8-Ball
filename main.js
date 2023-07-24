@@ -33,11 +33,17 @@ answer.classList.add('fade', 'text-center', 'fs-4', 'fw-bold', 'bg-white',
 'text-primary', 'p-3', 'rounded', 'w-50', 'position-absolute', 'top-50', 
 'start-50','translate-middle')
 
-answer.innerText = 'Hello There, how are you doing?'
+const randomIndex = Math.random() * messages.length
 
-return answer
+ballContainer.append(randomIndex)
+
+answerElement.innerText = messages[10]
+
+return answerElement
 }
+
+answer = createAnswer()
 
 ballContainer.append(answer)
 
-answer.remove()
+// answer.remove()
